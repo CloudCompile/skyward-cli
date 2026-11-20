@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skyward-cli"
+version = "0.1.0"
+description = "Skyward grades, assignments, schedule and attendance in your terminal"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "typer>=0.9",
+    "rich>=13",
+    "requests>=2.28",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov"]
+
+[project.scripts]
+skyward = "skyward.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["skyward"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
